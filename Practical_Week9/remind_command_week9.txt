@@ -1,0 +1,15 @@
+Examples of useful commands for data manipulation.
+Example 1. Retrieve specific columns from the GTF file, excluding comment lines.
+$ grep -v "^#" Mus_musculus.GRCm38.75_chr1.gtf | cut -f1,4,5
+
+Example 2. Sort the file using 2 CPU cores.
+$ sort --parallel 2 Mus_musculus.GRCm38.75_chr1.gtf
+
+Example 3. Count the total number of each annotation group from the GTF file.
+$ grep -v "^#" Mus_musculus.GRCm38.75_chr1.gtf | cut -f 3 | sort | uniq -c
+
+Example 4. Join two sorted files by a specified column.
+$ join -1 1 -2 1 example_sorted.bed example_lengths.txt
+** -a <file>  option to include unpairable lines
+$ join -1 1 -2 1 -a 1 example_sorted.bed example_lengths.txt
+
